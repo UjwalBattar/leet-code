@@ -9,10 +9,10 @@
 // Explanation: 342 + 465 = 807.
 
 // Definition for singly-linked list.
-// function ListNode(val) {
-//   this.val = val;
-//   this.next = null;
-// }
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
 
 // y??
 
