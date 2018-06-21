@@ -42,7 +42,7 @@ var convert = function(s, numRows) {
     rows[r] += s[i];
 
     if (r === 0 || r === numRows - 1) {
-      direction *= 1;
+      direction *= -1;
     }
 
     r += direction;
