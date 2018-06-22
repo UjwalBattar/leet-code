@@ -25,12 +25,13 @@
 # @param {Integer} x
 # @return {Boolean}
 def is_palindrome(x)
-  return false if number < 0
+  return false if x < 0
   res = 0
-  while x > 0
-    rem = x % 10
+  num = x
+  while num > 0
+    rem = num % 10
     res = res * 10 + rem
-    x = x / 10
+    num = num / 10
   end
   res == x
 end
