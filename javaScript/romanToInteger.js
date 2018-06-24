@@ -66,6 +66,7 @@ var romanToInt = function(s) {
     D: 500,
     M: 1000
   };
+
   let sum = roman[s[s.length - 1]];
   let curr = roman[s[s.length - 1]];
   let el;
