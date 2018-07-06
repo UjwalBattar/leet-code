@@ -19,7 +19,8 @@
  */
 
 var reverseWords = function(str) {
-  const resArr = str.split(" ").fliter(el => el != "");
+  if (str.length <= 0) return str;
+  let resArr = str.split(" ").filter(el => el != "");
   let res = "";
   for (let i = resArr.length - 1; i > 0; i--) {
     res += resArr[i];
