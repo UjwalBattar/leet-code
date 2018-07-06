@@ -24,7 +24,7 @@ def three_sum(nums)
   return res if nums.length < 3
   nums = nums.sort
   i = 0
-  while i < nums.length - 3
+  while i < nums.length - 2
     return res if nums[i] > 0
     if i == 0 || nums[i] > nums[i - 1]
       j = i + 1
