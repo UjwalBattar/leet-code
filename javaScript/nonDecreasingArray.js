@@ -19,6 +19,8 @@
  * @return {boolean}
  */
 var checkPossibility = function(nums) {
+  if (nums.length < 3) return true;
+
   let mods = -1;
   for (let i = 0; i < nums.length - 1; i++) {
     if (nums[i] >= nums[i + 1]) {

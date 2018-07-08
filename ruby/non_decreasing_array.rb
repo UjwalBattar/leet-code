@@ -18,5 +18,26 @@
 # @return {Boolean}
 
 def check_possibility(nums)
+  return true if nums.length < 3;
 
+  m = -1
+  i = 0
+  while i < nums.length - 1
+    if nums[i] > nums[i + 1]
+      if m != -1
+        return false
+      else
+        m = i
+      end
+    end
+    i += 1
+  end
+
+  return (
+    m == -1 ||
+    m == 0 ||
+    m == nums.length - 2 ||
+     nums[m - 1] <= nums[m + 1] ||
+     nums[m] <= nums[m + 2]
+   )
 end
