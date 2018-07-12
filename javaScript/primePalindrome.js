@@ -27,11 +27,19 @@
  * @param {number} N
  * @return {number}
  */
-var primePalindrome = function(N) {};
+var primePalindrome = function(N) {
+  let num = N;
+  while (num > N && num < 2 * Math.pow(10, 8)) {
+    if (isPalindrome(num)) {
+      if (isPrime(num)) return num;
+    }
+    num++;
+  }
+};
 
 function isPrime(n) {
   if (n === 2) return true;
-  for (let i = 2; i <= Math.ceil(n / 2); i++) {
+  for (let i = 2; i <= Math.sqrt(n); i++) {
     if (n % i === 0) {
       return false;
     }
