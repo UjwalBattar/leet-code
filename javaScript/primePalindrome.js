@@ -29,11 +29,14 @@
  */
 var primePalindrome = function(N) {
   let num = N;
-  while (num > N && num < 2 * Math.pow(10, 8)) {
-    if (isPalindrome(num)) {
-      if (isPrime(num)) return num;
+  while (true) {
+    if (isPalindrome(num) && isPrime(num)) {
+      return num;
     }
     num++;
+    if (10000000 < num && num < 100000000) {
+      num = 100000000;
+    }
   }
 };
 
