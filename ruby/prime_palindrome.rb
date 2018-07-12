@@ -23,3 +23,33 @@
 #
 # 1 <= N <= 10^8
 # The answer is guaranteed to exist and be less than 2 * 10^8.
+
+# @param {Integer} n
+# @return {Integer}
+
+def prime_palindrome(n)
+  while n < (10 ** 8)
+    if is_palindrome(n)
+      if is_prime(n)
+        return n
+      end
+    end
+    n += 1
+  end
+end
+
+def is_palindrome(n)
+  n = n.to_s
+  n == n.reverse
+end
+
+def is_prime(n)
+  return false if n < 2
+  return true if n == 2
+  i = 2
+  while i <= Math.sqrt(n)
+    return false if n % i == 0
+    i += 1
+  end
+  true
+end
