@@ -28,13 +28,14 @@
 # @return {Integer}
 
 def prime_palindrome(n)
-  while n < (10 ** 8)
-    if is_palindrome(n)
-      if is_prime(n)
-        return n
-      end
+  while true
+    if is_palindrome(n) && is_prime(n)
+      return n
     end
     n += 1
+    if 10000000 < n && n < 100000000
+      n = 100000000
+    end
   end
 end
 
@@ -45,7 +46,6 @@ end
 
 def is_prime(n)
   return false if n < 2
-  return true if n == 2
   i = 2
   while i <= Math.sqrt(n)
     return false if n % i == 0
