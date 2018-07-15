@@ -39,3 +39,9 @@
 # for (int i = 0; i < len; i++) {
 #     print(nums[i]);
 # }
+# @param {Integer[]} nums
+# @return {Integer}
+
+def remove_duplicates(nums)
+
+end

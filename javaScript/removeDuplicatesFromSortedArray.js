@@ -39,3 +39,8 @@
 // for (int i = 0; i < len; i++) {
 //     print(nums[i]);
 // }
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {};
