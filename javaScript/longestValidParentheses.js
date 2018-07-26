@@ -35,39 +35,40 @@
 //   }
 //   return maxLength;
 // };
-var longestValidParentheses = function(s) {
-  let lefts = 0;
-  let rights = 0;
-  let maxLen = 0;
 
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === "(") {
-      lefts++;
-    } else {
-      rights++;
-    }
-
-    if (lefts === rights) {
-      maxLen = Math.max(maxLen, rights * 2);
-    } else if (rights >= lefts) {
-      lefts = rights = 0;
-    }
-  }
-
-  lefts = rights = 0;
-  
-  for (let i = s.length - 1; i >= 0; i--) {
-    if (s[i] === '(') {
-      lefts++;
-    } else {
-      rights ++;
-    }
-
-    if (lefts === rights) {
-      maxLen = Math.max(maxLen, lefts * 2);
-    } else if (lefts >= rights) {
-      lefts = rights = 0;
-    }
-  }
-  return maxLen;
-};
+// var longestValidParentheses = function(s) {
+//   let lefts = 0;
+//   let rights = 0;
+//   let maxLen = 0;
+//
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === "(") {
+//       lefts++;
+//     } else {
+//       rights++;
+//     }
+//
+//     if (lefts === rights) {
+//       maxLen = Math.max(maxLen, rights * 2);
+//     } else if (rights >= lefts) {
+//       lefts = rights = 0;
+//     }
+//   }
+//
+//   lefts = rights = 0;
+//
+//   for (let i = s.length - 1; i >= 0; i--) {
+//     if (s[i] === '(') {
+//       lefts++;
+//     } else {
+//       rights ++;
+//     }
+//
+//     if (lefts === rights) {
+//       maxLen = Math.max(maxLen, lefts * 2);
+//     } else if (lefts >= rights) {
+//       lefts = rights = 0;
+//     }
+//   }
+//   return maxLen;
+// };
