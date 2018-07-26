@@ -18,21 +18,25 @@
  * @return {number}
  */
 var longestValidParentheses = function(s) {
-  let count;
+  let count = 0;
   const parenStack = [];
 
   for (let i = 0; i < s.length; i++) {
-    if (parenStack.length > 0 && parenStack[-1] === s[i]) {
+    if (parenStack[parenStack.length - 1] === s[i]) {
       parenStack.pop();
       count--;
     } else {
       if ( s[i] === "(") {
         parenStack.push(")");
+        count++;
       } else if (s[i] === ")") {
         parenStack.push("(");
+        count++;
       }
-      count++;
     }
   }
-  return count;
+  console.log("parenStack:", parenStack.length);
+  console.log("s:", s.length);
+  console.log("count:", count);
+  return s.length - parenStack.length;
 };

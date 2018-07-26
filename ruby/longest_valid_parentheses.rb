@@ -16,5 +16,14 @@
 # @param {String} s
 # @return {Integer}
 def longest_valid_parentheses(s)
+  count = 0
+  paren = []
+  i = 0
+  while i < s.length
+    if paren[-1] == s[i]
+      paren.pop
+      count
+    i += 1
+  end
 
 end
