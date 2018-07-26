@@ -22,8 +22,14 @@ def longest_valid_parentheses(s)
   while i < s.length
     if paren[-1] == s[i]
       paren.pop
-      count
+    else
+      if s[i] == "("
+        paren.push(")")
+      else
+        paren.push("(")
+      end
+    end
     i += 1
   end
-
+  s.length - paren.length
 end
