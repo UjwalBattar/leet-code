@@ -24,36 +24,32 @@
 # @return {ListNode}
 
 def merge_k_lists(lists)
+  amount = lists.length
+  interval = 1
 
+  while interval < amount
+    i = 0
+    while i < (amount - interval)
+      lists[i] = merge_two_lists(lists[i], lists[i + interval])
+      i += (interval * 2)
+    end
+    interval *= 2
+  end
+
+  return lists[0] if amount > 0
+  return lists
 end
 
-class Solution(object):
-    def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
-        amount = len(lists)
-        interval = 1
-        while interval < amount:
-            for i in range(0, amount - interval, interval * 2):
-                lists[i] = self.merge2Lists(lists[i], lists[i + interval])
-            interval *= 2
-        return lists[0] if amount > 0 else lists
+def merge_two_lists(l1, l2)
+  return l1 if l2.nil?
+  return l2 if l1.nil?
 
-    def merge2Lists(self, l1, l2):
-        head = point = ListNode(0)
-        while l1 and l2:
-            if l1.val <= l2.val:
-                point.next = l1
-                l1 = l1.next
-            else:
-                point.next = l2
-                l2 = l1
-                l1 = point.next.next
-            point = point.next
-        if not l1:
-            point.next=l2
-        else:
-            point.next=l1
-        return head.next
+  if l1.val < l2.val
+    l1.next = merge_two_lists(l1.next, l2)
+    return l1
+  else
+    l2.next = merge_two_lists(l1, l2.next)
+    return l2
+  end
+
+end

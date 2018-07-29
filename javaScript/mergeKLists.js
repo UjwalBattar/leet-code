@@ -23,13 +23,21 @@
  * @return {ListNode}
  */
 var mergeKLists = function(lists) {
-  if (lists.length === 0 ) return lists;
+  let amount = lists.length;
+  let interval = 1;
 
-  let mid = Math.floor(lists.length / 2);
-  let left = mergeKLists(lists.slice(0, mid));
-  let right = mergeKLists(lists.slice(mid));
+  while (interval < amount) {
+    for (let i = 0; i < (amount - interval); i += (interval * 2)) {
+      lists[i] = mergeTwoLists(lists[i], lists[i + interval]);
+    }
+    interval *= 2;
+  }
+  if (amount > 0) {
+    return lists[0];
+  } else {
+    return lists;
+  }
 
-  return mergeTwoLists(left, right);
 };
 
 function mergeTwoLists(l1, l2) {
