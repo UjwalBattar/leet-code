@@ -20,30 +20,61 @@
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-  if (strs === null || strs.length === 0) return "";
+  if (strs.length === 0) return "";
   let minLength = Number.MAX_VALUE;
   for (let str of strs) {
     minLength = Math.min(minLength, str.length);
   }
-  let low = 1;
-  let high = minLength;
 
+  let low = 0;
+  let high = minLength;
   while (low <= high) {
-    let middle = (low + high) / 2;
+    let middle = Math.floor((low + high) / 2);
     if (isCommonPrefix(strs, middle)) {
       low = middle + 1;
     } else {
-      high = middle + 1;
+      high = middle - 1;
     }
   }
-  return strs[0].substring(0, (low + high) / 2);
+  return strs[0].substring(0, Math.floor((low + high) / 2));
 };
 
 function isCommonPrefix(strs, len) {
   let str1 = strs[0].substring(0, len);
+
   for (let i = 1; i < strs.length; i++) {
     if (!strs[i].startsWith(str1)) return false;
   }
-
   return true;
 }
+
+
+// var longestCommonPrefix = function(strs) {
+//   if (strs === null || strs.length === 0) return "";
+//   let minLength = Number.MAX_VALUE;
+//   for (let str of strs) {
+//     minLength = Math.min(minLength, str.length);
+//   }
+//   let low = 1;
+//   let high = minLength;
+//
+//   while (low <= high) {
+//     let middle = (low + high) / 2;
+//     if (isCommonPrefix(strs, middle)) {
+//       low = middle + 1;
+//     } else {
+//       high = middle + 1;
+//     }
+//   }
+//   return strs[0].substring(0, (low + high) / 2);
+// };
+//
+// function isCommonPrefix(strs, len) {
+//   let str1 = strs[0].substring(0, len);
+//   for (let i = 1; i < strs.length; i++) {
+//     if (!strs[i].startsWith(str1)) return false;
+//   }
+//
+//   return true;
+//
+// }
