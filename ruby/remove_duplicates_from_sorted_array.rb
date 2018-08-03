@@ -43,5 +43,15 @@
 # @return {Integer}
 
 def remove_duplicates(nums)
-
+  return nums.length if nums.length <= 1
+  i = 0
+  (1...nums.length).each do |j|
+    if nums[i] != nums[j]
+      i += 1
+      nums[i] = nums[j]
+    end
+  end
+  # nums = nums.take(i + 1)
+  # nums.length
+  i + 1
 end
