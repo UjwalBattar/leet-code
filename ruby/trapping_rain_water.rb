@@ -22,10 +22,10 @@ def trap(height)
 
   while left < right
     if height[left] < height[right]
-      height[left] >= l_max ? l_max = height[left] : vol += height[left]
+      height[left] >= l_max ? l_max = height[left] : (vol += (l_max - height[left]))
       left += 1
     else
-      height[right] >= r_max ? r_max = height[right] : vol += height[right]
+      height[right] >= r_max ? r_max = height[right] : (vol += (r_max - height[right]))
       right -= 1
     end
   end
