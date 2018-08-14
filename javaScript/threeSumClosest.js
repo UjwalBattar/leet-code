@@ -12,21 +12,21 @@ var threeSumClosest = function(nums, target) {
     return nums.reduce((acc, el) => acc + el);
   }
 
-  let sum, result;
+  let left, right, temp, sum, result;
   sum = Number.MAX_VALUE;
 
   nums = nums.sort((a, b) => a - b);
 
   for (let curr = 0; curr < nums.length - 2; curr++) {
-    let left = curr + 1;
-    let right = nums.length - 1;
+    left = curr + 1;
+    right = nums.length - 1;
     while (left < right) {
-      let temp = nums[curr] + nums[left] + nums[right];
+      temp = nums[curr] + nums[left] + nums[right];
+      if (temp === target) return temp;
       result = target - temp;
       if (Math.abs(result) < Math.abs(target - sum)) {
         sum = temp;
       }
-      if (sum === target) return sum;
       if (temp > target) {
         right--;
       } else {
