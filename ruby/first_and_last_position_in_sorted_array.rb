@@ -9,5 +9,26 @@
 # @return {Integer[]}
 
 def search_range(nums, target)
+  left = find_index(nums, target, true)
+  right = find_index(nums, target, false) - 1
 
+  [
+    nums[left] == target ? left : -1,
+    nums[right] == target ? right : -1
+  ]
+end
+
+def find_index(nums, tgt, left)
+  low = 0
+  hi = nums.length
+
+  while low < hi
+    mid = (low + hi) / 2
+    if nums[mid] > tgt || (left && nums[mid] == tgt)
+      hi = mid
+    else
+      low = mid + 1
+    end
+  end
+  low
 end
