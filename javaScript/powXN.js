@@ -29,5 +29,4 @@ var myPow = function(x, n) {
   let sign = (x < 0 && e % 2 === 1) ? -1 : 1;
   let ans = x * myPow(x, e - 1);
   return (frac === true ? (1 / ans) : ans);
-
 };
