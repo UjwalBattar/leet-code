@@ -24,5 +24,16 @@
 # @return {Integer}
 
 def climb_stairs(n)
+  return 0 if n == 0
+  return 1 if n == 1
+  first = 1
+  second = 2
 
+  (n - 2).times do
+    third = first + second
+    first = second
+    second = third
+  end
+
+  second
 end
