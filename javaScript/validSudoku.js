@@ -54,5 +54,60 @@
  * @return {boolean}
  */
 var isValidSudoku = function(board) {
+  let len = board.length;
+  let rows = Array(9).fill({});
+  let cols = Array(9).fill({});
+  // rows[2][3] = "hello";
+  // console.log("test:", rows[2][3]);
+  let squares = Array(9).fill({});
+  let val;
+  let square;
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      val = board[row][col];
+      if (val === ".") continue;
+      // console.log("rows: ",rows[row][val]);
+      // console.log("cols:", cols[col][val]);
+      if (rows[row][val] === 1) {
+        console.log(rows);
+        return false;
+      }
+      if (cols[col][val] === 1) {
+        console.log(cols);
+        return false;
+      }
 
+      // square = 3 * Math.floor(row/3) + (col/3);
+      // console.log("squares:", squares[square][val]);
+      // if (squares[square][val] === 1) return false;
+      //
+      rows[row][val] = 1;
+      cols[col][val] = 1;
+      // squares[square][val] = 1;
+    }
+  }
+  return true;
 };
+
+isValidSudoku([
+  ["5","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]);
+isValidSudoku([
+  ["8","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]);
