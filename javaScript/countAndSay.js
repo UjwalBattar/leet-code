@@ -28,5 +28,22 @@
  * @return {string}
  */
 var countAndSay = function(n) {
+  if (!n) return "";
+  let res = "1";
+  let count, temp, ltr;
 
+  for (let i = 2; i <= n; i++) {
+    temp = "";
+    count = 0;
+    for (let j = 0; j < res.length; j++) {
+      ltr = res[j];
+      count++;
+      if (ltr !== res[j + 1]) {
+        temp += count + ltr;
+        count = 0;
+      }
+    }
+    res = temp;
+  }
+  return res;
 };
