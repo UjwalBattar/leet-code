@@ -27,5 +27,24 @@
 # @return {String}
 
 def count_and_say(n)
-
+  return "" if n < 1
+  res = "1"
+  i = 2
+  while i <= n
+    j = 0
+    count = 0
+    temp = ""
+    while j < res.length
+      char = res[j]
+      count += 1
+      if char != res[j]
+        temp += count + char
+        count = 0
+      end
+      j += 1
+    end
+    i += 1
+    res = temp
+  end
+  res
 end
