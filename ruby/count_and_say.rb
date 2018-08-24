@@ -37,8 +37,8 @@ def count_and_say(n)
     while j < res.length
       char = res[j]
       count += 1
-      if char != res[j]
-        temp += count + char
+      if char != res[j + 1]
+        temp += count.to_s + char
         count = 0
       end
       j += 1
@@ -48,3 +48,5 @@ def count_and_say(n)
   end
   res
 end
+
+# count_and_say(4)
