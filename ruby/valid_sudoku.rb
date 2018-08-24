@@ -53,5 +53,15 @@
 # @return {Boolean}
 
 def is_valid_sudoku(board)
+  len = board.length
+  rows = Array.new(9).map {|el| el = {}}
+  cols = Array.new(9).map {|el| el = {}}
+  squares = Array.new(9).map {|el| el = {}}
+
+  9.times do |row|
+    9.times do |col|
+      
+    end
+  end
 
 end
