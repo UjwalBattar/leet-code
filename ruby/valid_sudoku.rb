@@ -54,19 +54,21 @@
 
 def is_valid_sudoku(board)
   len = board.length
-  rows = Array.new(9).map {|el| el = {}}
-  cols = Array.new(9).map {|el| el = {}}
-  squares = Array.new(9).map {|el| el = {}}
+  rows = Array.new(len).map { {} }
+  cols = Array.new(len).map { {} }
+  squares = Array.new(len).map { {} }
 
   9.times do |row|
     9.times do |col|
       val = board[row][col]
-      next if val == ".";
+      next if val == "."
 
       return false if rows[row][val] == 1
       return false if cols[row][val] == 1
 
       square = 3 * (row / 3) + (col / 3)
+      return false if squares[square][val] == 1
+      
     end
   end
 
