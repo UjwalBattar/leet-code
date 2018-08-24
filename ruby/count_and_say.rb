@@ -48,5 +48,3 @@ def count_and_say(n)
   end
   res
 end
-
-# count_and_say(4)
