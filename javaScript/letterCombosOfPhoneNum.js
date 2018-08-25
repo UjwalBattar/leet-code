@@ -32,15 +32,17 @@ const conversion = {
  */
 var letterCombinations = function(digits) {
   if (digits.length < 1) return [""];
-  let prev = letterCombinations(digits.slice(0, digits.length - 1));
+  let last = digits.length - 1;
+  let prev = letterCombinations(digits.slice(0, last));
   let next = [];
-  for (let el of prev) {
-    el += digits[]
+  for (let i = 0; i < conversion[digits[last]].length; i++) {
+    next = next.concat(createPerms(prev, conversion[digits[last]][i]));
   }
+  return next;
 };
 
 function createPerms(prevArr, el) {
-  for
+  return prevArr.map((element) => element + el);
 }
 
-// letterCombinations("23");
+letterCombinations("23");
