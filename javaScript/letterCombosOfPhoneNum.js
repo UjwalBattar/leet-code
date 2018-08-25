@@ -31,8 +31,16 @@ const conversion = {
  * @return {string[]}
  */
 var letterCombinations = function(digits) {
-  if (digits.length < 1) return "";
-  let prev = letterCombinations(digits.slice(0, digits.length - 1))
+  if (digits.length < 1) return [""];
+  let prev = letterCombinations(digits.slice(0, digits.length - 1));
+  let next = [];
+  for (let el of prev) {
+    el += digits[]
+  }
 };
+
+function createPerms(prevArr, el) {
+  for
+}
 
 // letterCombinations("23");
