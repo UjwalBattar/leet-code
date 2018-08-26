@@ -21,5 +21,14 @@
  * @return {ListNode}
  */
 var swapPairs = function(head) {
+  if (!head || !head.next) return head;
 
+  let n1 = head.next;
+  let n2 = head.next.next;
+
+  n1.next = head;
+
+  head.next = swapPairs(n2);
+
+  return n1;
 };
