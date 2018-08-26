@@ -30,7 +30,15 @@ CONVERSION = {
 # @return {String[]}
 
 def letter_combinations(digits)
-  p digits
+  return [] if digits.empty?
+  return CONVERSION[digits[0]] if digits.length == 1
+  last = digits.length - 1
+  prev = letter_combinations(digits[0, last])
+  res = []
+  CONVERSION[digits[last]].length.times do |i|
+    prev.each { |el| res.push(el + CONVERSION[digits[last]][i]) }
+  end
+  res
 end
 
 # letter_combinations("23")
