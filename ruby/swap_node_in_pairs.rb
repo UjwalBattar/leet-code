@@ -23,5 +23,14 @@
 # @return {ListNode}
 
 def swap_pairs(head)
+  return head if (!head || !head.next)
 
+  n1 = head.next
+  n2 = head.next.next
+
+  n1.next = head
+
+  head.next = swap_pairs(n2)
+
+  n1
 end
