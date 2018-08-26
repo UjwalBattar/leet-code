@@ -24,5 +24,17 @@
 # @return {Integer}
 
 def str_str(haystack, needle)
+  return 0 if needle.empty?
 
+  i = 0
+
+  while i + needle.length <= haystack.length
+    if haystack[i] == needle[0]
+      if haystack[i, needle.length] == needle
+        return i
+      end
+    end
+    i += 1
+  end
+  -1
 end
