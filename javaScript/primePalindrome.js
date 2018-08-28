@@ -33,12 +33,12 @@ var primePalindrome = function(N) {
     if (isPalindrome(num) && isPrime(num)) {
       return num;
     }
-//     num++;
-//     if (10000000 < num && num < 100000000) {
-//       num = 100000000;
-//     }
-//   }
-// };
+    num++;
+    if (10000000 < num && num < 100000000) {
+      num = 100000000;
+    }
+  }
+};
 
 function isPrime(n) {
   if (n === 2) return true;
