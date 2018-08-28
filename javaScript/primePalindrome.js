@@ -28,11 +28,11 @@
  * @return {number}
  */
 var primePalindrome = function(N) {
-//   let num = N;
-//   while (true) {
-//     if (isPalindrome(num) && isPrime(num)) {
-//       return num;
-//     }
+  let num = N;
+  while (true) {
+    if (isPalindrome(num) && isPrime(num)) {
+      return num;
+    }
 //     num++;
 //     if (10000000 < num && num < 100000000) {
 //       num = 100000000;
