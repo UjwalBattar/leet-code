@@ -25,5 +25,20 @@
  * @return {number}
  */
 var numJewelsInStones = function(J, S) {
+  if (!J.length || !S.length) return 0;
 
+  const jewels = {};
+
+  for (let j = 0; j < J.length; j++) {
+    if (!jewels[J[j].charCodeAt(0)]) jewels[J[j].charCodeAt(0)] = J[j];
+  }
+
+  let count = 0;
+
+  for (let s = 0; s < S.length; s++) {
+    if (jewels[S[s].charCodeAt(0)]) count++;
+  }
+  return count;
 };
+
+numJewelsInStones("aA", "aAAbbaAbb");
