@@ -37,6 +37,24 @@
 # @param {String[]} words
 # @return {Integer}
 
-def unique_morse_representations(words)
+MORSE = [
+  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",
+  ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.",
+  "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."
+]
 
+def unique_morse_representations(words)
+  res = {}
+
+  words.each do |word|
+    temp = ""
+    word.chars.each do |c|
+      temp += MORSE[c.ord - 97]
+    end
+    res[temp] = 1
+  end
+
+  res.keys.length
 end
+
+unique_morse_representations(["gin", "zen", "gig", "msg"])
