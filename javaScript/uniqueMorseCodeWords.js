@@ -39,5 +39,24 @@
  * @return {number}
  */
 var uniqueMorseRepresentations = function(words) {
+  const morse = [
+    ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",
+    ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.",
+    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."
+  ];
 
+  let res = {};
+  let temp;
+
+  words.forEach((word => {
+    temp = "";
+    for (let i = 0; i < word.length; i++) {
+      temp += morse[word[i].charCodeAt(0) - 97];
+    }
+    res[temp] = 1;
+  }));
+
+  return Object.keys(res).length;
 };
+
+uniqueMorseRepresentations(["gin", "zen", "gig", "msg"]);
