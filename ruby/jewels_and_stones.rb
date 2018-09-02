@@ -19,3 +19,24 @@
 #
 # S and J will consist of letters and have length at most 50.
 # The characters in J are distinct.
+# @param {String} j
+# @param {String} s
+# @return {Integer}
+
+def num_jewels_in_stones(j, s)
+  return 0 if stones.empty? || jewels.empty?
+  jewels = {}
+  j.chars.each do |jewel|
+    unless jewels[jewel]
+      jewels[jewel.ord] = jewel
+    end
+  end
+
+  count = 0
+
+  s.chars.each do |stone|
+    count += 1 if jewels[stone.ord]
+  end
+
+  count
+end

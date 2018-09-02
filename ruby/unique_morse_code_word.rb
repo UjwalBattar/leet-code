@@ -34,3 +34,9 @@
 # The length of words will be at most 100.
 # Each words[i] will have length in range [1, 12].
 # words[i] will only consist of lowercase letters.
+# @param {String[]} words
+# @return {Integer}
+
+def unique_morse_representations(words)
+
+end
