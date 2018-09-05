@@ -19,3 +19,25 @@
 // 3 <= A.length <= 10000
 // 0 <= A[i] <= 10^6
 // A is a mountain, as defined above.
+/**
+ * @param {number[]} A
+ * @return {number}
+ */
+var peakIndexInMountainArray = function(A) {
+  if (A.length < 3) return null;
+
+  let low = 0;
+  let hi = A.length - 1;
+
+  while (low < hi) {
+    let mid = low + Math.floor((hi - low) / 2);
+    if (A[mid] < A[mid + 1]) {
+      low = mid + 1;
+    } else {
+      hi = mid;
+    }
+  }
+
+  return low;
+};
+peakIndexInMountainArray([0, 1, 0]);
