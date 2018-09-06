@@ -38,5 +38,14 @@
 # @return {String}
 
 def orderly_queue(s, k)
-
+  if k == 1
+    res = s
+    s.length.times do |i|
+      temp = s[i..-1] + s[0...i]
+      res = temp if temp < res
+    end
+    res
+  else
+    s.split("").sort.join
+  end
 end
