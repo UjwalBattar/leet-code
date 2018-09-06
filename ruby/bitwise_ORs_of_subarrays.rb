@@ -41,5 +41,20 @@ require 'set'
 
 
 def subarray_bitwise_o_rs(a)
+  res = Set[]
+  prev = Set[]
+  prev.add(0)
 
+  a.each do |x|
+    temp = Set[]
+    prev.each do |y|
+      temp.add(x | y)
+    end
+    temp.add(x)
+    prev = temp
+    res.merge prev
+  end
+  res.size
 end
+
+subarray_bitwise_o_rs([1, 1, 2])
