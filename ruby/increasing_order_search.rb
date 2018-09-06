@@ -60,6 +60,7 @@ def increasing_bst(root)
       temp = temp.right
     end
   end
+  ARR.pop until ARR.length == 0 #Because ARR is global constant
   res
 end
 
@@ -69,3 +70,18 @@ def in_order(node)
   ARR.push(node.val)
   in_order(node.right)
 end
+
+# def increasing_bst(root)
+#     increasing_bst_h(root)
+# end
+#
+# def increasing_bst_h(node, root_node = nil)
+#     return if node.nil?
+#     right_n = increasing_bst_h(node.right, root_node) if node.right
+#     n_node = TreeNode.new(node.val)
+#     n_node.right = right_n || root_node
+#     if node.left
+#         n_node = increasing_bst_h(node.left, n_node)
+#     end
+#     n_node
+# end
