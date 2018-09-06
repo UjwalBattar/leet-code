@@ -53,7 +53,7 @@ def increasing_bst(root)
   in_order(root)
   res = TreeNode.new(nil)
   temp = res
-  ARR.each_with idex do |n, i|
+  ARR.each_with_index do |n, i|
     temp.val = n
     if i < ARR.length - 1
       temp.right = TreeNode.new(nil)
