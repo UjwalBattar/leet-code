@@ -23,5 +23,24 @@
 # @return {Integer}
 
 def search(nums, target)
-
+  lo = 0
+  hi = nums.length - 1
+  while lo <= hi
+    mid = lo + (hi - lo) / 2
+    return mid if nums[mid] === target
+    if nums[lo] <= nums[mid]
+      if target >= nums[lo] && target < nums[mid]
+        hi = mid - 1
+      else
+        lo = mid + 1
+      end
+    else
+      if target > nums[mid] && target <= nums[hi]
+        lo = mid + 1
+      else
+        hi = mid - 1
+      end
+    end
+  end
+  -1
 end
