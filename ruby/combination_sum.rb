@@ -31,5 +31,21 @@
 # @return {Integer[][]}
 
 def combination_sum(candidates, target)
+  candidates.sort!
+  [].tap { |res| combination_finder(candidates, target, [], 0, res) }
+end
 
+def combination_finder(candidates, tgt, curr_arr, idx, results)
+  return if tgt < 0
+
+  if tgt == 0
+    results << curr_arr.dup
+  else
+    (idx...candidates.length).each do |i|
+      new_tgt = tgt - candidates[i]
+      curr_arr.push(candidates[i])
+      combination_finder(candidates, new_tgt, curr_arr, i, results)
+      curr_arr.pop
+    end
+  end
 end
