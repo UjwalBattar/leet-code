@@ -49,3 +49,5 @@
 var numSpecialEquivGroups = function(A) {
 
 };
+
+numSpecialEquivGroups(["abc","acb","bac","bca","cab","cba"]);
