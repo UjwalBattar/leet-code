@@ -15,5 +15,13 @@
 # @return {Integer}
 
 def max_sub_array(nums)
-    
+  prev = nums[0]
+  curr = nums[0]
+  (1...nums.length).each do |i|
+    curr = [curr + nums[i], nums[i]].max
+    prev = [prev, curr].max
+  end
+  prev
 end
+
+# max_sub_array([-2,1,-3,4,-1,2,1,-5,4])
