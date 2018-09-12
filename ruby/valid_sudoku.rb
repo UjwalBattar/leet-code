@@ -58,8 +58,8 @@ def is_valid_sudoku(board)
   cols = Array.new(len).map { {} }
   squares = Array.new(len).map { {} }
 
-  9.times do |row|
-    9.times do |col|
+  len.times do |row|
+    len.times do |col|
       val = board[row][col]
       next if val == "."
 

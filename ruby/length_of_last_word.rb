@@ -14,12 +14,13 @@
 # @return {Integer}
 
 def length_of_last_word(s)
+  return 0 if s.empty?
   count = 0
   i = s.length - 1
-  while s[i] == " "
+  while s[i] == " " && i >= 0
     i -= 1
   end
-  while s[i] != " "
+  while s[i] != " " && i >= 0
     count += 1
     i -= 1
   end

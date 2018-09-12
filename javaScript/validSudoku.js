@@ -66,8 +66,8 @@ var isValidSudoku = function(board) {
   let squares = Array.from(Array(len), () => new Object());
   let val, square;
 
-  for (let row = 0; row < 9; row++) {
-    for (let col = 0; col < 9; col++) {
+  for (let row = 0; row < len; row++) {
+    for (let col = 0; col < len; col++) {
 
       val = board[row][col];
       if (val === ".") continue;
