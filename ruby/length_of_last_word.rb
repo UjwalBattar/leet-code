@@ -14,5 +14,16 @@
 # @return {Integer}
 
 def length_of_last_word(s)
-
+  count = 0
+  i = s.length - 1
+  while s[i] == " "
+    i -= 1
+  end
+  while s[i] != " "
+    count += 1
+    i -= 1
+  end
+  count
 end
+
+# length_of_last_word("Hello World")
