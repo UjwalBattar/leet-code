@@ -36,10 +36,10 @@ def remove_nth_from_end(head, n)
   i = 1
   while i <= n
     first = first.next
-    i +=1
+    i += 1
   end
 
-  while first.next != nil
+  while !first.next.nil?
     first = first.next
     second = second.next
   end
