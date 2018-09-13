@@ -14,7 +14,7 @@ function zeroOrdArr(arr) {
       z = i;
     }
 
-    if (arr[i] !== 0) {
+    if (arr[z] === 0 && arr[i] !== 0) {
       [arr[z], arr[i]] = [arr[i], arr[z]];
       z++;
     }
