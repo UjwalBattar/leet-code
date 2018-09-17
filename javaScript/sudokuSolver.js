@@ -24,40 +24,41 @@
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
- var solveSudoku = function(board) {
-   const len = board.length;
-   let rows = Array.from(Array(len), () => new Array(9));
-   let cols = Array.from(Array(len), () => new Array(9));
-   let squares = Array.from(Array(len), () => new Array(9));
-   let val, sq;
-   console.log('rows: ', rows);
-   for (let row = 0; row < board.length; row++) {
-     for (let col = 0; col < board.length; col++) {
+var solveSudoku = function(board) {
+  const len = board.length;
 
-       val = board[row][col];
-       if (val === '.') continue;
+  let rows = Array.from(Array(len), () => new Array(9));
+  let cols = Array.from(Array(len), () => new Array(9));
+  let squares = Array.from(Array(len), () => new Array(9));
+  let val, sq;
 
-       rows[row][val - 1] = 1;
-       cols[col][val - 1] = 1;
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board.length; col++) {
 
-       sq = 3 * Math.floor(row / 3) + Math.floor(col / 3);
-       squares[sq][val - 1] = 1;
-     }
-   }
+      val = board[row][col];
+      if (val === '.') continue;
 
-   console.log('rows: ', rows);
-   console.log('cols: ', cols);
-   console.log('squares: ',squares);
- };
+      rows[row][val - 1] = 1;
+      cols[col][val - 1] = 1;
 
- solveSudoku([
-   ["5","3",".",".","7",".",".",".","."],
-   ["6",".",".","1","9","5",".",".","."],
-   [".","9","8",".",".",".",".","6","."],
-   ["8",".",".",".","6",".",".",".","3"],
-   ["4",".",".","8",".","3",".",".","1"],
-   ["7",".",".",".","2",".",".",".","6"],
-   [".","6",".",".",".",".","2","8","."],
-   [".",".",".","4","1","9",".",".","5"],
-   [".",".",".",".","8",".",".","7","9"]
- ]);
+      sq = 3 * Math.floor(row / 3) + Math.floor(col / 3);
+      squares[sq][val - 1] = 1;
+    }
+  }
+
+  console.log('rows: ', rows);
+  console.log('cols: ', cols);
+  console.log('squares: ',squares);
+};
+
+solveSudoku([
+  ["5","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]);
