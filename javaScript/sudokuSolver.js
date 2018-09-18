@@ -24,31 +24,80 @@
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
+ function cellOptions(board, row, col) {
+
+ }
+
+ function cellBlock(board, row, col) {
+
+ }
+
+ // Get options for each cell
+ // try with that input
+ // recursively pass the new board and continue process
+ // if options all return false, recurse to initial cell and increment
+ // in the options array
+ // iterate through all cells backtracking on each one
+ // in the end, if true, return the tmp board filled with all inputs
+let count = 0;
 var solveSudoku = function(board) {
+  count++;
   const len = board.length;
 
-  let rows = Array.from(Array(len), () => new Array(9));
-  let cols = Array.from(Array(len), () => new Array(9));
-  let squares = Array.from(Array(len), () => new Array(9));
-  let val, sq;
+  let rows = new Object();
+  let cols = new Object();
+  let squares = new Object();
+  let sqRow, sqCol;
 
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board.length; col++) {
+      // count++;
+      // console.log(count);
+      if (board[row][col] !== '.') continue;
+      board[row].forEach( el => {
+        if (el !== '.') rows[el] = 1;
+      });
 
-      val = board[row][col];
-      if (val === '.') continue;
+      for (let i = 0; i < len; i++) {
+        if (board[i][col] !== '.') cols[board[i][col]] = 1;
+      }
 
-      rows[row][val - 1] = 1;
-      cols[col][val - 1] = 1;
-
-      sq = 3 * Math.floor(row / 3) + Math.floor(col / 3);
-      squares[sq][val - 1] = 1;
+      sqRow = 3 * Math.floor(row / 3);
+      sqCol = 3 * Math.floor(col / 3);
+      for (let r = sqRow; r < sqRow + 3; r++) {
+        for (let c = sqCol; c < sqCol + 3; c++) {
+          if (board[r][c] !== '.') squares[board[r][c]] = 1;
+        }
+      }
+      let options = [];
+      if (
+        Object.keys(rows).length === 9 &&
+        Object.keys(cols).length === 9 &&
+        Object.keys(squares).length === 9
+      ) {
+        return console.log("..................--------done---------------------------");
+      }
+      for (let i = 1; i <= 9; i++) {
+        if (!rows[i] && !cols[i] && !squares[i]) options.push(i);
+      }
+      // debugger;
+      // let possibleSol = board.map(arr => arr.slice());
+      options.forEach(el => {
+        board[row][col] = el;
+        console.log(board);
+        console.log("           ----             ");
+        console.log("           ----             ");
+        console.log("           ----             ");
+        console.log("           ----             ");
+        if (solveSudoku(board)) return board;
+          board[row][col] = '.';
+      });
+      console.log(count);
+      return false;
     }
   }
 
-  console.log('rows: ', rows);
-  console.log('cols: ', cols);
-  console.log('squares: ',squares);
+  return board;
 };
 
 solveSudoku([
