@@ -1,23 +1,20 @@
+let t1;
+
 function solveSudoku(board) {
+  // t1 = performance.now();
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board.length; col++) {
       if (board[row][col] !== '.') continue;
 
-      let options = getOptions(board, row, col);
+      let options = getCellOptions(board, row, col);
       if (!options.length) return null;
 
-      let proposed = board.slice();
+      let possibleSol = board.slice();
       for (let i = 0; i < options.length; i++) {
-        proposed[row][col] = options[i];
-        console.log(proposed);
-        console.log("----------");
-        console.log("----------");
-        console.log("----------");
-        console.log("----------");
-        if (solveSudoku(proposed)) return proposed;
-        proposed[row][col] = '.';
+        possibleSol[row][col] = options[i];
+        if (solveSudoku(possibleSol)) return possibleSol;
+        possibleSol[row][col] = '.';
       }
-
       return null;
     }
   }
@@ -25,7 +22,7 @@ function solveSudoku(board) {
   return board;
 }
 
-function getOptions(board, r, c) {
+function getCellOptions(board, r, c) {
   let len = board.length;
   let rows = [];
   board[r].forEach(el => {
@@ -35,7 +32,7 @@ function getOptions(board, r, c) {
   for (let i = 0; i < len; i++) {
     if (board[i][c] !== '.') cols.push(board[i][c]);
   }
-  let block = getBlock(board, r, c);
+  let block = getCellBlock(board, r, c);
 
   let options = [];
   let poss = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -48,7 +45,7 @@ function getOptions(board, r, c) {
   return options;
 }
 
-function getBlock(board, r, c) {
+function getCellBlock(board, r, c) {
   let rowStart = 3 * Math.floor(r / 3);
   let colStart = 3 * Math.floor(c / 3);
   let block = [];
@@ -62,28 +59,31 @@ function getBlock(board, r, c) {
   }
   return block;
 }
+console.time('solveSudoku');
+solveSudoku([
+  ["5","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+]);
+console.timeEnd('solveSudoku');
 
-// solveSudoku([
-//   ["5","3",".",".","7",".",".",".","."],
-//   ["6",".",".","1","9","5",".",".","."],
-//   [".","9","8",".",".",".",".","6","."],
-//   ["8",".",".",".","6",".",".",".","3"],
-//   ["4",".",".","8",".","3",".",".","1"],
-//   ["7",".",".",".","2",".",".",".","6"],
-//   [".","6",".",".",".",".","2","8","."],
-//   [".",".",".","4","1","9",".",".","5"],
-//   [".",".",".",".","8",".",".","7","9"]
-// ]);
-//
-// solveSudoku([
-//   [".","1",".","2","3",".",".","4","."],
-//   [".","5",".",".","4","6",".",".","."],
-//   ["7",".",".",".","8",".",".","6","9"],
-//   [".",".",".","8",".","7",".","3","."],
-//   [".","7","9",".",".",".","8","5","."],
-//   [".","6",".","5",".","1",".",".","."],
-//   ["1","3",".",".","7",".",".",".","6"],
-//   [".",".",".","4","5",".",".","7","."],
-//   [".","8",".",".","1","3",".","2","."]
-// ]);
-//
+console.time('solveSudoku');
+solveSudoku([
+  [".","1",".","2","3",".",".","4","."],
+  [".","5",".",".","4","6",".",".","."],
+  ["7",".",".",".","8",".",".","6","9"],
+  [".",".",".","8",".","7",".","3","."],
+  [".","7","9",".",".",".","8","5","."],
+  [".","6",".","5",".","1",".",".","."],
+  ["1","3",".",".","7",".",".",".","6"],
+  [".",".",".","4","5",".",".","7","."],
+  [".","8",".",".","1","3",".","2","."]
+]);
+
+console.timeEnd('solveSudoku');

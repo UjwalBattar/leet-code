@@ -24,13 +24,6 @@
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
- function cellOptions(board, row, col) {
-
- }
-
- function cellBlock(board, row, col) {
-
- }
 
  // Get options for each cell
  // try with that input
@@ -39,11 +32,17 @@
  // in the options array
  // iterate through all cells backtracking on each one
  // in the end, if true, return the tmp board filled with all inputs
-let count = 0;
-var solveSudoku = function(board) {
-  count++;
-  const len = board.length;
 
+ // function cellOptions(board, row, col) {
+ //
+ // }
+ //
+ // function cellBlock(board, row, col) {
+ //
+ // }
+
+var solveSudoku = function(board) {
+  const len = board.length;
   let rows = new Object();
   let cols = new Object();
   let squares = new Object();
@@ -51,8 +50,7 @@ var solveSudoku = function(board) {
 
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board.length; col++) {
-      // count++;
-      // console.log(count);
+
       if (board[row][col] !== '.') continue;
       board[row].forEach( el => {
         if (el !== '.') rows[el] = 1;
@@ -69,37 +67,25 @@ var solveSudoku = function(board) {
           if (board[r][c] !== '.') squares[board[r][c]] = 1;
         }
       }
+
       let options = [];
-      if (
-        Object.keys(rows).length === 9 &&
-        Object.keys(cols).length === 9 &&
-        Object.keys(squares).length === 9
-      ) {
-        return console.log("..................--------done---------------------------");
-      }
       for (let i = 1; i <= 9; i++) {
-        if (!rows[i] && !cols[i] && !squares[i]) options.push(i);
+        let el = (i).toString();
+        if (!rows[el] && !cols[el] && !squares[el]) options.push(el);
       }
-      // debugger;
-      // let possibleSol = board.map(arr => arr.slice());
-      options.forEach(el => {
-        board[row][col] = el;
-        console.log(board);
-        console.log("           ----             ");
-        console.log("           ----             ");
-        console.log("           ----             ");
-        console.log("           ----             ");
-        if (solveSudoku(board)) return board;
-          board[row][col] = '.';
-      });
-      console.log(count);
+      let possibleSol = board.slice();
+      for (let i = 0; i < options.length; i++) {
+        possibleSol[row][col] = options[i];
+        if (solveSudoku(possibleSol)) return possibleSol;
+          possibleSol[row][col] = '.';
+      }
       return false;
     }
   }
 
   return board;
 };
-
+console.time('solveSudoku');
 solveSudoku([
   ["5","3",".",".","7",".",".",".","."],
   ["6",".",".","1","9","5",".",".","."],
@@ -111,3 +97,19 @@ solveSudoku([
   [".",".",".","4","1","9",".",".","5"],
   [".",".",".",".","8",".",".","7","9"]
 ]);
+console.timeEnd('solveSudoku');
+
+console.time('solveSudoku');
+solveSudoku([
+  [".","1",".","2","3",".",".","4","."],
+  [".","5",".",".","4","6",".",".","."],
+  ["7",".",".",".","8",".",".","6","9"],
+  [".",".",".","8",".","7",".","3","."],
+  [".","7","9",".",".",".","8","5","."],
+  [".","6",".","5",".","1",".",".","."],
+  ["1","3",".",".","7",".",".",".","6"],
+  [".",".",".","4","5",".",".","7","."],
+  [".","8",".",".","1","3",".","2","."]
+]);
+
+console.timeEnd('solveSudoku');
