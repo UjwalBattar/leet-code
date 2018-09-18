@@ -9,9 +9,12 @@ function solveSudoku(board) {
       let proposed = board.slice();
       for (let i = 0; i < options.length; i++) {
         proposed[row][col] = options[i];
-        if (solveSudoku(proposed)) {
-          return proposed;
-        }
+        console.log(proposed);
+        console.log("----------");
+        console.log("----------");
+        console.log("----------");
+        console.log("----------");
+        if (solveSudoku(proposed)) return proposed;
         proposed[row][col] = '.';
       }
 
@@ -42,8 +45,6 @@ function getOptions(board, r, c) {
     }
 
   });
-  if (r === 8 && c === 6) {
-  }
   return options;
 }
 
@@ -62,47 +63,27 @@ function getBlock(board, r, c) {
   return block;
 }
 
-var isValidSudoku = function(board) {
-  let len = board.length;
-  // let rows = Array(len).fill({});
-  // .fill() causes an issue because all the elements the Array is filled
-  // with point to the same instance of the element!!!!
-
-  // The code below is better. Array.from() takes a mapFn which maps
-  // over each of the elements
-  let rows = Array.from(Array(len), () => new Object());
-  let cols = Array.from(Array(len), () => new Object());
-  let squares = Array.from(Array(len), () => new Object());
-  let val, square;
-
-  for (let row = 0; row < len; row++) {
-    for (let col = 0; col < len; col++) {
-
-      val = board[row][col];
-      if (val === ".") return false;
-
-      if (rows[row][val] === 1) return false;
-      if (cols[col][val] === 1) return false;
-
-      square = 3 * Math.floor(row/3) + Math.floor(col/3);
-      if (squares[square][val] === 1) return false;
-
-      rows[row][val] = 1;
-      cols[col][val] = 1;
-      squares[square][val] = 1;
-    }
-  }
-  return true;
-};
-
-solveSudoku([
-  ["5","3",".",".","7",".",".",".","."],
-  ["6",".",".","1","9","5",".",".","."],
-  [".","9","8",".",".",".",".","6","."],
-  ["8",".",".",".","6",".",".",".","3"],
-  ["4",".",".","8",".","3",".",".","1"],
-  ["7",".",".",".","2",".",".",".","6"],
-  [".","6",".",".",".",".","2","8","."],
-  [".",".",".","4","1","9",".",".","5"],
-  [".",".",".",".","8",".",".","7","9"]
-]);
+// solveSudoku([
+//   ["5","3",".",".","7",".",".",".","."],
+//   ["6",".",".","1","9","5",".",".","."],
+//   [".","9","8",".",".",".",".","6","."],
+//   ["8",".",".",".","6",".",".",".","3"],
+//   ["4",".",".","8",".","3",".",".","1"],
+//   ["7",".",".",".","2",".",".",".","6"],
+//   [".","6",".",".",".",".","2","8","."],
+//   [".",".",".","4","1","9",".",".","5"],
+//   [".",".",".",".","8",".",".","7","9"]
+// ]);
+//
+// solveSudoku([
+//   [".","1",".","2","3",".",".","4","."],
+//   [".","5",".",".","4","6",".",".","."],
+//   ["7",".",".",".","8",".",".","6","9"],
+//   [".",".",".","8",".","7",".","3","."],
+//   [".","7","9",".",".",".","8","5","."],
+//   [".","6",".","5",".","1",".",".","."],
+//   ["1","3",".",".","7",".",".",".","6"],
+//   [".",".",".","4","5",".",".","7","."],
+//   [".","8",".",".","1","3",".","2","."]
+// ]);
+//
