@@ -1,1 +1,1 @@
-// check if singly linked list ias palindrome
+// check if singly linked list is a palindrome
