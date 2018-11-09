@@ -26,5 +26,6 @@
  * @return {number[]}
  */
 var plusOne = function(digits) {
-
+  if (!digits.length) return [1];
+  return (parseInt(digits.join("")) + 1).toString().split("").map (el => parseInt(el));
 };
