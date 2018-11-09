@@ -23,6 +23,5 @@
 # @return {Integer[]}
 
 def plus_one(digits)
-  return [1] if digits.empty?
-  
+  (digits.join.to_i + 1).to_s.chars.map {|i| i.to_i}
 end
