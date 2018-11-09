@@ -17,20 +17,14 @@
 # @return {Integer[][]}
 def permute(nums)
   return [nums] if nums.length <= 1
-
-  curr = nums.shift(1)
+  curr = nums.shift
   perms = permute(nums)
 
   res = []
 
   perms.each do |perm|
-    puts perm
-    i = 0
-    while i <= perm.length
-      temp = perm[0, i]
-      # .concat([curr]).concat(perm[i, perm.length])
-      res.push(perm[0, i].concat([curr]).concat(perm[i, perm.length]))
-      i += 1
+    (0..perm.length).each do |i|
+      res.push(perm[0...i].concat([curr]).concat(perm[i..-1]))
     end
   end
   res
