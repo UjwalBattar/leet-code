@@ -26,10 +26,10 @@ var permute = (nums) => {
   perms.forEach((perm) => {
     for (let i = 0; i <= perm.length; i++) {
       totalPerms.push(perm.slice(0, i).concat([curr], perm.slice(i, perms.length)));
-      }
+    }
   });
 
   return totalPerms;
 };
 
-permute([1, 2, 3]);
+// permute([1, 2, 3]);
