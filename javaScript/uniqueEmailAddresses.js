@@ -65,15 +65,15 @@
 
 // second attempt
 var numUniqueEmails = function (emails) {
-    const uniqueEmails = {};
+    let uniqueEmails = {};
     let count = 0;
 
     for (let i = 0; i < emails.length; i++) {
         let email = emails[i];
-        const atIdx = email.indexOf('@') + 1;
-        const domain = email.slice(atIdx);
-        const name = email.slice(0, email.indexOf('+'));
-        const sanitizedName = name.replace(/\./g, '');
+        let atIdx = email.indexOf('@') + 1;
+        let domain = email.slice(atIdx);
+        let name = email.slice(0, email.indexOf('+'));
+        let sanitizedName = name.replace(/\./g, '');
         if (uniqueEmails[domain]) {
             if (uniqueEmails[domain].indexOf(sanitizedName) === -1) {
                 uniqueEmails[domain].push(sanitizedName);
